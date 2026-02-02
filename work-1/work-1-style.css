@@ -1,0 +1,398 @@
+/* 基本設定 */
+:root {
+    --text-color: #333;
+    --bg-color: #fff;
+    --accent-color: #bfa67a; 
+    --overlay-color: rgba(0, 0, 0, 0.4);
+}
+
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* ヘッダー */
+.site-header {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    z-index: 10;
+    color: #fff;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+/* トップビュー */
+.hero {
+    position: relative;
+    height: 100vh; 
+    width: 100%;
+    background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    color: #fff;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; 
+    animation: fadeIn 2s ease;
+}
+
+.hero-sub {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 300; 
+    margin-bottom: 40px;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+}
+
+.btn-primary:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+}
+/* --- 実績紹介セクション --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+/* セクションタイトル */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+.section-desc {
+    text-align: center;
+    color: #888;
+    margin-bottom: 60px;
+    font-size: 0.9rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 40px 30px; 
+}
+
+/* 個々のプロジェクトカード */
+.project-item {
+    position: relative;
+    overflow: hidden; 
+}
+
+.img-wrapper {
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 4 / 3; 
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.6s ease; 
+    display: block;
+}
+
+/* テキスト情報 */
+.project-info {
+    padding-top: 15px;
+}
+
+.project-name {
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin: 0 0 5px 0;
+    letter-spacing: 0.05em;
+}
+
+.project-cat {
+    font-size: 0.8rem;
+    color: var(--accent-color); 
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.project-item:hover .img-wrapper img {
+    transform: scale(1.05);
+}
+
+.project-item:hover .project-name {
+    color: var(--accent-color);
+    transition: color 0.3s;
+}
+
+/* --- Studio セクション --- */
+
+.studio-section {
+    background-color: #f9f9f9; 
+}
+
+.studio-wrapper {
+    display: flex;
+    align-items: center; 
+    gap: 80px; 
+    justify-content: space-between;
+}
+
+.studio-text {
+    flex: 1; 
+    max-width: 500px;
+}
+
+.sub-heading {
+    display: block;
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.studio-title {
+    font-size: 2.2rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.studio-desc {
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+.studio-image {
+    flex: 1.2; 
+    position: relative;
+}
+
+.studio-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+}
+
+.btn-dark {
+    display: inline-block;
+    padding: 12px 35px;
+    border: 1px solid #333;
+    color: #333;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.btn-dark:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .studio-wrapper {
+        flex-direction: column-reverse; 
+        gap: 40px;
+    }
+    
+    .studio-text {
+        max-width: 100%;
+        text-align: center; 
+    }
+
+    .studio-title {
+        font-size: 1.8rem;
+    }
+}
+
+.contact-section {
+    position: relative;
+    padding: 120px 20px;
+    text-align: center;
+    color: #fff;
+    background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+.contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+.contact-content {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+}
+
+.contact-text {
+    margin-bottom: 40px;
+    line-height: 1.8;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* --- フッター --- */
+.site-footer {
+    background-color: #1a1a1a; 
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.footer-col {
+    flex: 1;
+}
+
+.footer-logo {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+.footer-address {
+    font-style: normal;
+    line-height: 1.8;
+}
+
+.footer-heading {
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+}
+
+.footer-links, .footer-social {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, .footer-social li {
+    margin-bottom: 10px;
+}
+
+.footer-links a:hover, .footer-social a:hover {
+    color: var(--accent-color); 
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .contact-title {
+        font-size: 1.8rem;
+    }
+}
