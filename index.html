@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ポートフォリオサイト - 洗練された機能美とモダンなWeb技術の実装デモ">
+    <title>Portfolio | Refined Functional Beauty</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__logo">Portfolio.</h1>
+            <nav class="header__nav" aria-label="メインナビゲーション">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#works" class="nav__link">Works</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="ダークモードに切り替え">
+                <span class="theme-toggle__icon"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero js-observe">
+            <div class="hero__content">
+                <p class="hero__subtitle">Front-End Engineer & UI Designer</p>
+                <h2 class="hero__title">Refined<br>Functional<br>Beauty</h2>
+                <p class="hero__description">
+                    基礎を徹底し、細部に魂を宿す。<br>
+                    パフォーマンスとインタラクションの最適解を追求します。
+                </p>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="section__container">
+                <h2 class="section__title js-observe">About Me</h2>
+                <div class="about__grid">
+                    <div class="about__image-area js-observe">
+                        <img src="./images/koma.jpg" alt="プロフィール画像" class="about__image" width="600" height="800" loading="lazy">
+                    </div>
+                    <div class="about__info js-observe">
+                        <h3 class="about__subheading">論理的な設計と<br>直感的な体験の融合</h3>
+                        <p class="about__text">
+                            現役の情報系学部大学生として大学生活を送る傍らWeb制作を行っています。理系的な論理思考を武器に、
+                            ユーザーにとって最適な「ちょうどいい」デザインを構築することを大切にしています。
+                        </p>
+                        <p class="about__text">
+                            UIデザインの感性と、堅牢なコード構築力を兼ね備えたWebエンジニアです。
+                            単に動くものを作るのではなく、BEMによる保守性の高いCSS設計や、アクセシビリティ（WAI-ARIA）を考慮したマークアップを徹底し、「機能する美しさ」を実装します。
+                        </p>
+                        <div class="about__skills">
+                            <h4 class="about__skills-title">Technical Skills</h4>
+                            <ul class="skill-list">
+                                <li class="skill-item">HTML / CSS</li>
+                                <li class="skill-item">JavaScript </li>
+                                <li class="skill-item">Unity / C#</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="works" class="section works">
+            <div class="section__container">
+                <h2 class="section__title js-observe">Selected Works</h2>
+                <div class="works__grid">
+                    <article class="work-card js-observe">
+                        <a href="./works-1/work-1.html" class="work-card__link" aria-label="プロジェクト詳細を見る">
+                            <div class="work-card__image-wrapper">
+                                <img src="./images/it.png" alt="プロジェクトサムネイル" class="work-card__image" loading="lazy" width="800" height="600">
+                            </div>
+                            <div class="work-card__content">
+                                <h3 class="work-card__title">IT LP</h3>
+                                <p class="work-card__category">HTML / CSS</p>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="work-card js-observe">
+                        <a href="#" class="work-card__link" aria-label="プロジェクト詳細を見る">
+                            <div class="work-card__image-wrapper">
+                                <img src="-" alt="プロジェクトサムネイル" class="work-card__image" loading="lazy" width="800" height="600">
+                            </div>
+                            <div class="work-card__content">
+                                <h3 class="work-card__title">---</h3>
+                                <p class="work-card__category">- / -</p>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="work-card js-observe">
+                        <a href="#" class="work-card__link" aria-label="プロジェクト詳細を見る">
+                            <div class="work-card__image-wrapper">
+                                <img src="-" alt="プロジェクトサムネイル" class="work-card__image" loading="lazy" width="800" height="600">
+                            </div>
+                            <div class="work-card__content">
+                                <h3 class="work-card__title">---</h3>
+                                <p class="work-card__category">- / -</p>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2026 Portfolio. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

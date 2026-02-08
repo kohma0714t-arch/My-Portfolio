@@ -1,0 +1,403 @@
+/* =========================================
+   Variables & Reset
+   ========================================= */
+:root {
+    /* Color Tokens (Light Mode Default) */
+    --color-bg: #f9f9f9;
+    --color-text: #1a1a1a;
+    --color-text-muted: #666666;
+    --color-accent: #333333;
+    --color-card-bg: #ffffff;
+    
+    /* Spacing & Layout */
+    --spacing-unit: 8px;
+    --container-width: 1200px;
+    --header-height: 80px;
+    
+    /* Animation Easing */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark Mode Tokens */
+[data-theme="dark"] {
+    --color-bg: #111111;
+    --color-text: #f0f0f0;
+    --color-text-muted: #aaaaaa;
+    --color-accent: #ffffff;
+    --color-card-bg: #1e1e1e;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    /* テーマ切り替え時の色の変化を滑らかにする */
+    transition: background-color 0.4s var(--ease-out-expo), color 0.4s var(--ease-out-expo);
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* =========================================
+   Layout Utilities
+   ========================================= */
+.section__container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+/* =========================================
+   Header & Nav
+   ========================================= */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+}
+
+[data-theme="dark"] .header {
+    background-color: rgba(17, 17, 17, 0.8);
+}
+
+.header__container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.nav__list {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 4);
+}
+
+/* Nav Micro-interaction */
+.nav__link {
+    position: relative;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+}
+
+.nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    transition: transform 0.3s var(--ease-out-expo), opacity 0.3s ease;
+}
+
+.nav__link:hover {
+    color: var(--color-text-muted);
+}
+
+.nav__link:hover::after {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+/* =========================================
+   Theme Toggle Switch
+   ========================================= */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--color-text);
+    border-radius: 20px;
+    width: 48px;
+    height: 26px;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.theme-toggle__icon {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-text);
+    border-radius: 50%;
+    transition: transform 0.3s var(--ease-out-expo), background-color 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle__icon {
+    transform: translateX(22px);
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: var(--header-height);
+}
+
+.hero__content {
+    text-align: center;
+}
+
+.hero__subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-unit);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.hero__title {
+    /* Fluid Typography: 画面幅に応じて滑らかにサイズ変化 */
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+.hero__description {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--color-text-muted);
+}
+
+/* =========================================
+   About Section
+   ========================================= */
+.about__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* PCサイズで2カラムにする */
+@media (min-width: 768px) {
+    .about__grid {
+        grid-template-columns: 1fr 1.2fr; /* 画像:テキスト = 1 : 1.2 */
+        gap: 60px;
+    }
+}
+
+.about__image-area {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    /* 画像に少し装飾的な影をつける */
+    box-shadow: 20px 20px 0px var(--color-text-muted);
+    margin-bottom: 20px; /* モバイル用余白 */
+}
+
+@media (min-width: 768px) {
+    .about__image-area {
+        margin-bottom: 0;
+    }
+}
+
+.about__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* 白黒フィルターでシックにする（ホバーでカラー化も可能） */
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+}
+
+.about__image-area:hover .about__image {
+    filter: grayscale(0%);
+}
+
+.about__subheading {
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+.about__text {
+    margin-bottom: 24px;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    text-align: justify; /* 文章の両端を揃えて美しく見せる */
+}
+
+/* Skills List */
+.about__skills {
+    margin-top: 40px;
+}
+
+.about__skills-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--color-text-muted);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill-item {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 6px 16px;
+    border: 1px solid var(--color-text);
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.skill-item:hover {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* =========================================
+   Works Section
+   ========================================= */
+.section {
+    padding: 120px 0;
+}
+
+.section__title {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.works__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+/* Work Card Micro-interaction */
+.work-card {
+    position: relative;
+}
+
+.work-card__link {
+    display: block;
+}
+
+.work-card__image-wrapper {
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background-color: #e0e0e0; /* 読み込み前のちらつき防止 */
+}
+
+.work-card__image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.6s var(--ease-out-expo);
+    will-change: transform;
+}
+
+.work-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: inline-block;
+    position: relative;
+}
+
+/* タイトル下線のインタラクション */
+.work-card__title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--ease-out-expo);
+}
+
+.work-card__category {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+/* Hover States */
+.work-card:hover .work-card__image {
+    transform: scale(1.05);
+}
+
+.work-card:hover .work-card__title::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* =========================================
+   Scroll Animation Classes
+   ========================================= */
+/* 初期状態: 少し下に配置して透明に */
+.js-observe {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s var(--ease-out-expo);
+    will-change: opacity, transform;
+}
+
+/* 表示状態 */
+.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
